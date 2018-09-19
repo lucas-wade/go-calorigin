@@ -1,89 +1,89 @@
 package calorigin
 
 // Sites
-func GetSites() {}
+func (client *Client) GetSites() {}
 
-func GetSiteBySiteID() {}
+func (client *Client) GetSiteBySiteID() {}
 
-func GetSiteByLicense() {}
+func (client *Client) GetSiteByLicense() {}
 
-func GetCustomers() {}
+func (client *Client) GetCustomers() {}
 
-func GetCustomersBySiteID() {}
+func (client *Client) GetCustomersBySiteID() {}
 
-func GetDisposalSites() {}
+func (client *Client) GetDisposalSites() {}
 
-func GetTestLabs() {}
+func (client *Client) GetTestLabs() {}
 
-func GetDeliveryFromSites() {}
+func (client *Client) GetDeliveryFromSites() {}
 
 // Plantings
-func CreatePlanting() {}
+func (client *Client) CreatePlanting(planting Planting) {}
 
-func GetPlantings() {}
+func (client *Client) GetPlantings() {}
 
-func GetPlantingByID() {}
+func (client *Client) GetPlantingByID() {}
 
-func UpdatePlanting() {}
+func (client *Client) UpdatePlanting() {}
 
-func DeletePlanting() {}
+func (client *Client) DeletePlanting() {}
 
 // Harvests
-func CreateHarvest() {}
+func (client *Client) CreateHarvest(harvest Harvest) {}
 
-func GetHarvests() {}
+func (client *Client) GetHarvests() {}
 
-func GetHarvestByID() {}
+func (client *Client) GetHarvestByID() {}
 
-func UpdateHarvest() {}
+func (client *Client) UpdateHarvest() {}
 
-func DeleteHarvest() {}
+func (client *Client) DeleteHarvest() {}
 
 // Products
-func CreateProduct() {}
+func (client *Client) CreateProduct(product Product) {}
 
-func GetProducts() {}
+func (client *Client) GetProducts() {}
 
-func GetProductByID() {}
+func (client *Client) GetProductByID() {}
 
-func GetProductTypes() {}
+func (client *Client) GetProductTypes() {}
 
-func UpdateProduct() {}
+func (client *Client) UpdateProduct() {}
 
-func DeleteProduct() {}
+func (client *Client) DeleteProduct() {}
 
 // Activations
-func CreateActivation() {}
+func (client *Client) CreateActivation(activation Activation) {}
 
-func GetActivationBatches() {}
+func (client *Client) GetActivationBatches() {}
 
-func GetActivationBatchByID() {}
+func (client *Client) GetActivationBatchByID() {}
 
 // Inventory
-func GetProductInventory() {}
+func (client *Client) GetProductInventory() {}
 
-func GetProductDetail() {}
+func (client *Client) GetProductDetail() {}
 
-func GetStampRollInventory() {}
+func (client *Client) GetStampRollInventory() {}
 
-func GetStampsByStampRoll() {}
+func (client *Client) GetStampsByStampRoll() {}
 
 // Transfers
-func CreateTransfer() {}
+func (client *Client) CreateTransfer(transfer Transfer) {}
 
-func GetTransfersIncoming() {}
+func (client *Client) GetTransfersIncoming() {}
 
-func GetTransferIncomingByTransferID() {}
+func (client *Client) GetTransferIncomingByTransferID() {}
 
-func GetTransfersOutgoing() {}
+func (client *Client) GetTransfersOutgoing() {}
 
-func GetTransfersOutgoingByTransferID() {}
+func (client *Client) GetTransfersOutgoingByTransferID() {}
 
-func UpdateTransfer() {}
+func (client *Client) UpdateTransfer() {}
 
-func ConfirmTransfer() {}
+func (client *Client) ConfirmTransfer() {}
 
-func ReturnTransfer() {}
+func (client *Client) ReturnTransfer() {}
 
 // Trace
-func TraceStamp() {}
+func (client *Client) TraceStamp() {}
