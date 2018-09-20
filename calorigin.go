@@ -8,6 +8,7 @@ import (
 
 // Sites
 func (client *Client) GetSites() () {
+
 }
 
 func (client *Client) GetSiteBySiteID() {}
@@ -25,7 +26,7 @@ func (client *Client) GetTestLabs() {}
 func (client *Client) GetDeliveryFromSites() {}
 
 // Plantings
-func (client *Client) CreatePlanting(token string, planting Planting) (*Planting, error) {
+func (client *Client) CreatePlanting(token string, planting Planting) ([]byte, error) {
 	url := client.URL + "/plantings/create"
 
 	j, err := json.Marshal(planting)
@@ -41,18 +42,12 @@ func (client *Client) CreatePlanting(token string, planting Planting) (*Planting
 	req.Header.Add("x-ibm-client-id", client.ClientID)
 	req.Header.Add("authorization", token)
 
-	byteData, err := client.doRequest(req)
+	data, err := client.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
-	var data Planting
-	err = json.Unmarshal(byteData, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
+	return data, nil
 }
 
 func (client *Client) GetPlantings() {}
@@ -64,7 +59,7 @@ func (client *Client) UpdatePlanting() {}
 func (client *Client) DeletePlanting() {}
 
 // Harvests
-func (client *Client) CreateHarvest(token string, harvest Harvest) (*Harvest, error) {
+func (client *Client) CreateHarvest(token string, harvest Harvest) ([]byte, error) {
 	url := client.URL + "/harvests/create"
 
 	j, err := json.Marshal(harvest)
@@ -80,18 +75,12 @@ func (client *Client) CreateHarvest(token string, harvest Harvest) (*Harvest, er
 	req.Header.Add("x-ibm-client-id", client.ClientID)
 	req.Header.Add("authorization", token)
 
-	byteData, err := client.doRequest(req)
+	data, err := client.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
-	var data Harvest
-	err = json.Unmarshal(byteData, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
+	return data, nil
 }
 
 func (client *Client) GetHarvests() {}
@@ -103,7 +92,7 @@ func (client *Client) UpdateHarvest() {}
 func (client *Client) DeleteHarvest() {}
 
 // Products
-func (client *Client) CreateProduct(token string, product Product) (*Product, error) {
+func (client *Client) CreateProduct(token string, product Product) ([]byte, error) {
 	url := client.URL + "/products/create"
 
 	j, err := json.Marshal(product)
@@ -119,18 +108,12 @@ func (client *Client) CreateProduct(token string, product Product) (*Product, er
 	req.Header.Add("x-ibm-client-id", client.ClientID)
 	req.Header.Add("authorization", token)
 
-	byteData, err := client.doRequest(req)
+	data, err := client.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
-	var data Product
-	err = json.Unmarshal(byteData, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
+	return data, nil
 }
 
 func (client *Client) GetProducts() {}
@@ -144,7 +127,7 @@ func (client *Client) UpdateProduct() {}
 func (client *Client) DeleteProduct() {}
 
 // Activations
-func (client *Client) CreateActivation(token string, activation Activation) (*Activation, error) {
+func (client *Client) CreateActivation(token string, activation Activation) ([]byte, error) {
 	url := client.URL + "/activation"
 
 	j, err := json.Marshal(activation)
@@ -160,18 +143,12 @@ func (client *Client) CreateActivation(token string, activation Activation) (*Ac
 	req.Header.Add("x-ibm-client-id", client.ClientID)
 	req.Header.Add("authorization", token)
 
-	byteData, err := client.doRequest(req)
+	data, err := client.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
-	var data Activation
-	err = json.Unmarshal(byteData, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
+	return data, nil
 }
 
 func (client *Client) GetActivationBatches() {}
@@ -188,7 +165,7 @@ func (client *Client) GetStampRollInventory() {}
 func (client *Client) GetStampsByStampRoll() {}
 
 // Transfers
-func (client *Client) CreateTransfer(token string, transfer Transfer) (*Transfer, error) {
+func (client *Client) CreateTransfer(token string, transfer Transfer) ([]byte, error) {
 	url := client.URL + "/transfers/create"
 
 	j, err := json.Marshal(transfer)
@@ -204,18 +181,12 @@ func (client *Client) CreateTransfer(token string, transfer Transfer) (*Transfer
 	req.Header.Add("x-ibm-client-id", client.ClientID)
 	req.Header.Add("authorization", token)
 
-	byteData, err := client.doRequest(req)
+	data, err := client.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
 
-	var data Transfer
-	err = json.Unmarshal(byteData, &data)
-	if err != nil {
-		return nil, err
-	}
-
-	return &data, nil
+	return data, nil
 }
 
 func (client *Client) GetTransfersIncoming() {}

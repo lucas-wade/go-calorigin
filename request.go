@@ -8,6 +8,7 @@ import (
 
 func (client *Client) doRequest(req *http.Request) ([]byte, error) {
 	httpClient := &http.Client{}
+	req.Header.Add("Content-Type", "application/json")
 
 	resp, err := httpClient.Do(req)
 	if err != nil {
