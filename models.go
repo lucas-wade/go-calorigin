@@ -46,6 +46,22 @@ type Product struct {
 }
 
 type Activation struct {
+	ActivationSiteID    int     `json:"activationSiteId"`
+	StampNoStart        string  `json:"stampNoStart"`
+	StampNoEnd          string  `json:"stampNoEnd"`
+	StampQty            int     `json:"stampQty"`
+	ProductCatalogID    int     `json:"productCatalogId"`
+	PlantingID          int     `json:"plantingId"`
+	PlantQty            int     `json:"plantQty"`
+	HarvestID           int     `json:"harvestId"`
+	NetWtg              float64 `json:"netWtg"`
+	Thc                 float64 `json:"thc"`
+	SourceLicenseSiteID int     `json:"sourceLicenseSiteId"`
+	SourceStampQty      int     `json:"sourceStampQty"`
+	SourceStamps        []struct {
+		StampNo    string  `json:"stampNo"`
+		UsedNetWtg float64 `json:"usedNetWtg"`
+	} `json:"sourceStamps"`
 }
 
 type Transfer struct {
