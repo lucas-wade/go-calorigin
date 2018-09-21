@@ -6,27 +6,160 @@ import (
 	"net/http"
 )
 
-// Sites
-func (client *Client) GetSites() () {
+func (client *Client) GetSites(token string) ([]byte, error) {
+	url := client.URL + "/sites"
 
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
 }
 
-func (client *Client) GetSiteBySiteID() {}
+func (client *Client) GetSiteBySiteID(token string, siteID int) ([]byte, error)  {
+	url := client.URL + "/sites/" + string(siteID)
 
-func (client *Client) GetSiteByLicense() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) GetCustomers() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) GetCustomersBySiteID() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) GetDisposalSites() {}
+	return data, nil
+}
 
-func (client *Client) GetTestLabs() {}
+func (client *Client) GetSiteByLicense(token string, licenseNumber string) ([]byte, error)  {
+	url := client.URL + "/sites/license/" + licenseNumber
 
-func (client *Client) GetDeliveryFromSites() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-// Plantings
-func (client *Client) CreatePlanting(token string, planting Planting) ([]byte, error) {
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetCustomers(token string) ([]byte, error)  {
+	url := client.URL + "/sites/customers"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetCustomersBySiteID(token string, siteID int) ([]byte, error)  {
+	url := client.URL + "/sites/" + string(siteID) + "/customers"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetDisposalSites(token string) ([]byte, error)  {
+	url := client.URL + "/sites/disposal"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetTestLabs(token string) ([]byte, error)  {
+	url := client.URL + "/sites/testlabs"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetDeliveryFromSites(token string, siteID int) ([]byte, error)  {
+	url := client.URL + "/sites/" + string(siteID) + "/from"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+// CreatePlanting will create a planting and return the response.
+func (client *Client) CreatePlanting(token string, planting CreatePlantingRequest) ([]byte, error) {
 	url := client.URL + "/plantings/create"
 
 	j, err := json.Marshal(planting)
@@ -50,16 +183,113 @@ func (client *Client) CreatePlanting(token string, planting Planting) ([]byte, e
 	return data, nil
 }
 
-func (client *Client) GetPlantings() {}
+func (client *Client) GetPlantings(token string) ([]byte, error)  {
+	url := client.URL + "/plantings"
 
-func (client *Client) GetPlantingByID() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) UpdatePlanting() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) DeletePlanting() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-// Harvests
-func (client *Client) CreateHarvest(token string, harvest Harvest) ([]byte, error) {
+	return data, nil
+}
+
+func (client *Client) GetPlantingByID(token string, plantingID int) ([]byte, error)  {
+	url := client.URL + "/planting/" + string(plantingID)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetPlantingLightTypes(token string) ([]byte, error) {
+	url := client.URL + "/plantings/light_types"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) UpdatePlanting(token string, planting UpdatePlantingRequest) ([]byte, error)  {
+	url := client.URL + "/plantings/edit"
+
+	j, err := json.Marshal(planting)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) DeletePlanting(token string, planting DeletePlantingRequest) ([]byte, error)  {
+	url := client.URL + "/plantings/delete"
+
+	j, err := json.Marshal(planting)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+// CreateHarvest will create a harvest and return the response.
+func (client *Client) CreateHarvest(token string, harvest CreateHarvestRequest) ([]byte, error) {
 	url := client.URL + "/harvests/create"
 
 	j, err := json.Marshal(harvest)
@@ -83,16 +313,94 @@ func (client *Client) CreateHarvest(token string, harvest Harvest) ([]byte, erro
 	return data, nil
 }
 
-func (client *Client) GetHarvests() {}
+func (client *Client) GetHarvests(token string) ([]byte, error)  {
+	url := client.URL + "/harvests"
 
-func (client *Client) GetHarvestByID() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) UpdateHarvest() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) DeleteHarvest() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-// Products
-func (client *Client) CreateProduct(token string, product Product) ([]byte, error) {
+	return data, nil
+}
+
+func (client *Client) GetHarvestByID(token string, harvestID int) ([]byte, error)  {
+	url := client.URL + "/harvests/" + string(harvestID)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) UpdateHarvest(token string, harvest UpdateHarvestRequest) ([]byte, error)  {
+	url := client.URL + "/harvests/edit"
+
+	j, err := json.Marshal(harvest)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) DeleteHarvest(token string, harvest DeleteHarvestRequest) ([]byte, error)  {
+	url := client.URL + "/plantings/delete"
+
+	j, err := json.Marshal(harvest)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+// CreateProduct will create a product and return the response
+func (client *Client) CreateProduct(token string, product CreateProductRequest) ([]byte, error) {
 	url := client.URL + "/products/create"
 
 	j, err := json.Marshal(product)
@@ -116,18 +424,112 @@ func (client *Client) CreateProduct(token string, product Product) ([]byte, erro
 	return data, nil
 }
 
-func (client *Client) GetProducts() {}
+func (client *Client) GetProducts(token string) ([]byte, error)  {
+	url := client.URL + "/products"
 
-func (client *Client) GetProductByID() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) GetProductTypes() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) UpdateProduct() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) DeleteProduct() {}
+	return data, nil
+}
 
-// Activations
-func (client *Client) CreateActivation(token string, activation Activation) ([]byte, error) {
+func (client *Client) GetProductByID(token string, productID int) ([]byte, error)  {
+	url := client.URL + "/products/" + string(productID)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetProductTypes(token string) ([]byte, error)  {
+	url := client.URL + "/products/types"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) UpdateProduct(token string, product UpdateProductRequest) ([]byte, error)  {
+	url := client.URL + "/products/edit"
+
+	j, err := json.Marshal(product)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) DeleteProduct(token string, product DeleteProductRequest) ([]byte, error)  {
+	url := client.URL + "/products/delete"
+
+	j, err := json.Marshal(product)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) CreateActivation(token string, activation CreateActivationRequest) ([]byte, error) {
 	url := client.URL + "/activation"
 
 	j, err := json.Marshal(activation)
@@ -151,21 +553,121 @@ func (client *Client) CreateActivation(token string, activation Activation) ([]b
 	return data, nil
 }
 
-func (client *Client) GetActivationBatches() {}
+func (client *Client) GetActivationBatches(token string) ([]byte, error)  {
+	url := client.URL + "/activation/batches"
 
-func (client *Client) GetActivationBatchByID() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-// Inventory
-func (client *Client) GetProductInventory() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) GetProductDetail() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) GetStampRollInventory() {}
+	return data, nil
+}
 
-func (client *Client) GetStampsByStampRoll() {}
+func (client *Client) GetActivationBatchByID(token string, batchID int) ([]byte, error)  {
+	url := client.URL + "/activations/batches/" + string(batchID)
 
-// Transfers
-func (client *Client) CreateTransfer(token string, transfer Transfer) ([]byte, error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetProductInventory(token string) ([]byte, error)  {
+	url := client.URL + "/inventory/product"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetProductDetail(token string, siteID, productID int) ([]byte, error)  {
+	url := client.URL + "/inventory/product/" + string(siteID) + "/" + string(productID)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetStampRollInventory(token string) ([]byte, error)  {
+	url := client.URL + "/inventory/stamp"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetStampsByStampRoll(token string, rollNumber int) ([]byte, error)  {
+	url := client.URL + "/inventory/stamp/" + string(rollNumber)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) CreateTransfer(token string, transfer CreateTransferRequest) ([]byte, error) {
 	url := client.URL + "/transfers/create"
 
 	j, err := json.Marshal(transfer)
@@ -189,19 +691,169 @@ func (client *Client) CreateTransfer(token string, transfer Transfer) ([]byte, e
 	return data, nil
 }
 
-func (client *Client) GetTransfersIncoming() {}
+func (client *Client) GetTransfersIncoming(token string) ([]byte, error)  {
+	url := client.URL + "/transfers/incoming"
 
-func (client *Client) GetTransferIncomingByTransferID() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) GetTransfersOutgoing() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
 
-func (client *Client) GetTransfersOutgoingByTransferID() {}
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-func (client *Client) UpdateTransfer() {}
+	return data, nil
+}
 
-func (client *Client) ConfirmTransfer() {}
+func (client *Client) GetTransferIncomingByTransferID(token string, transferNumber int) ([]byte, error) {
+	url := client.URL + "/transfers/incoming/" + string(transferNumber)
 
-func (client *Client) ReturnTransfer() {}
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
 
-// Trace
-func (client *Client) TraceStamp() {}
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetTransfersOutgoing(token string) ([]byte, error)  {
+	url := client.URL + "/transfers/outgoing"
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) GetTransfersOutgoingByTransferID(token string, transferNumber int) ([]byte, error)  {
+	url := client.URL + "/transfers/outgoing/" + string(transferNumber)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) UpdateTransfer(token string, transfer UpdateTransferRequest) ([]byte, error)  {
+	url := client.URL + "/transfers/edit"
+
+	j, err := json.Marshal(transfer)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) ConfirmTransfer(token string, transfer ConfirmTransferRequest) ([]byte, error)  {
+	url := client.URL + "/transfers/confirm"
+
+	j, err := json.Marshal(transfer)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) ReturnTransfer(token string, transfer ReturnTransferRequest) ([]byte, error)  {
+	url := client.URL + "/transfers/return"
+
+	j, err := json.Marshal(transfer)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func (client *Client) TraceStamp(token string, stampNumber string) ([]byte, error)  {
+	url := client.URL + "/trace/" + string(stampNumber)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("x-ibm-client-id", client.ClientID)
+	req.Header.Add("authorization", token)
+
+	data, err := client.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
