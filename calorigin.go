@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
+	"strconv"
 )
 
 func (client *Client) GetSites(token string) ([]byte, error) {
@@ -26,7 +27,7 @@ func (client *Client) GetSites(token string) ([]byte, error) {
 }
 
 func (client *Client) GetSiteBySiteID(token string, siteID int) ([]byte, error)  {
-	url := client.URL + "/sites/" + string(siteID)
+	url := client.URL + "/sites/" + strconv.Itoa(siteID)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
