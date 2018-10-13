@@ -79,7 +79,7 @@ type CreateProductRequest struct {
 	Sku             string  `json:"sku"`
 	Description     string  `json:"description"`
 	Packaging       string  `json:"packaging"`
-	PlantingQty     int     `json:"plantingQty,omitempty"`
+	PlantQty        int     `json:"plantQty,omitempty"`
 	NetWeightInGram float64 `json:"netWeightInGram,omitempty"`
 	ThcPct          float64 `json:"thcPct,omitempty"`
 }
