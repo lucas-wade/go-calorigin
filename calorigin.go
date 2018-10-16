@@ -84,7 +84,7 @@ func (client *Client) GetCustomers(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetCustomersBySiteID(token string, siteID int) ([]byte, error)  {
-	url := client.URL + "/sites/" + string(siteID) + "/customers"
+	url := client.URL + "/sites/" + strconv.Itoa(siteID) + "/customers"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -141,7 +141,7 @@ func (client *Client) GetTestLabs(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetDeliveryFromSites(token string, siteID int) ([]byte, error)  {
-	url := client.URL + "/sites/" + string(siteID) + "/from"
+	url := client.URL + "/sites/" + strconv.Itoa(siteID) + "/from"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -204,7 +204,7 @@ func (client *Client) GetPlantings(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetPlantingByID(token string, plantingID int) ([]byte, error)  {
-	url := client.URL + "/planting/" + string(plantingID)
+	url := client.URL + "/planting/" + strconv.Itoa(plantingID)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -334,7 +334,7 @@ func (client *Client) GetHarvests(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetHarvestByID(token string, harvestID int) ([]byte, error)  {
-	url := client.URL + "/harvests/" + string(harvestID)
+	url := client.URL + "/harvests/" + strconv.Itoa(harvestID)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -445,7 +445,7 @@ func (client *Client) GetProducts(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetProductByID(token string, productID int) ([]byte, error)  {
-	url := client.URL + "/products/" + string(productID)
+	url := client.URL + "/products/" + strconv.Itoa(productID)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -574,7 +574,7 @@ func (client *Client) GetActivationBatches(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetActivationBatchByID(token string, batchID int) ([]byte, error)  {
-	url := client.URL + "/activations/batches/" + string(batchID)
+	url := client.URL + "/activations/batches/" + strconv.Itoa(batchID)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -650,7 +650,7 @@ func (client *Client) GetStampRollInventory(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetStampsByStampRoll(token string, rollNumber int) ([]byte, error)  {
-	url := client.URL + "/inventory/stamp/" + string(rollNumber)
+	url := client.URL + "/inventory/stamp/" + strconv.Itoa(rollNumber)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -712,7 +712,7 @@ func (client *Client) GetTransfersIncoming(token string) ([]byte, error)  {
 }
 
 func (client *Client) GetTransferIncomingByTransferID(token string, transferNumber int) ([]byte, error) {
-	url := client.URL + "/transfers/incoming/" + string(transferNumber)
+	url := client.URL + "/transfers/incoming/" + strconv.Itoa(transferNumber)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -841,7 +841,7 @@ func (client *Client) ReturnTransfer(token string, transfer ReturnTransferReques
 }
 
 func (client *Client) TraceStamp(token string, stampNumber string) ([]byte, error)  {
-	url := client.URL + "/trace/" + string(stampNumber)
+	url := client.URL + "/trace/" + stampNumber
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
