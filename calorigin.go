@@ -377,7 +377,7 @@ func (client *Client) UpdateHarvest(token string, harvest UpdateHarvestRequest) 
 }
 
 func (client *Client) DeleteHarvest(token string, harvest DeleteHarvestRequest) ([]byte, error)  {
-	url := client.URL + "/plantings/delete"
+	url := client.URL + "/harvests/delete"
 
 	j, err := json.Marshal(harvest)
 	if err != nil {
