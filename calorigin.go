@@ -649,8 +649,8 @@ func (client *Client) GetStampRollInventory(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetStampsByStampRoll(token string, rollNumber int) ([]byte, error)  {
-	url := client.URL + "/inventory/stamp/" + strconv.Itoa(rollNumber)
+func (client *Client) GetStampsByStampRoll(token string, rollNumber string) ([]byte, error)  {
+	url := client.URL + "/inventory/stamp/" + rollNumber
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
