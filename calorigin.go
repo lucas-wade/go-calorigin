@@ -8,9 +8,9 @@ import (
 )
 
 func (client *Client) GetSites(token string) ([]byte, error) {
-	url := client.URL + "/sites"
+	baseURL := client.URL + "/sites"
 
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", baseURL, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -26,7 +26,7 @@ func (client *Client) GetSites(token string) ([]byte, error) {
 	return data, nil
 }
 
-func (client *Client) GetSiteBySiteID(token string, siteID int) ([]byte, error)  {
+func (client *Client) GetSiteBySiteID(token string, siteID int) ([]byte, error) {
 	url := client.URL + "/sites/" + strconv.Itoa(siteID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -45,7 +45,7 @@ func (client *Client) GetSiteBySiteID(token string, siteID int) ([]byte, error) 
 	return data, nil
 }
 
-func (client *Client) GetSiteByLicense(token string, licenseNumber string) ([]byte, error)  {
+func (client *Client) GetSiteByLicense(token string, licenseNumber string) ([]byte, error) {
 	url := client.URL + "/sites/license/" + licenseNumber
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -64,7 +64,7 @@ func (client *Client) GetSiteByLicense(token string, licenseNumber string) ([]by
 	return data, nil
 }
 
-func (client *Client) GetCustomers(token string) ([]byte, error)  {
+func (client *Client) GetCustomers(token string) ([]byte, error) {
 	url := client.URL + "/sites/customers"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -83,7 +83,7 @@ func (client *Client) GetCustomers(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetCustomersBySiteID(token string, siteID int) ([]byte, error)  {
+func (client *Client) GetCustomersBySiteID(token string, siteID int) ([]byte, error) {
 	url := client.URL + "/sites/" + strconv.Itoa(siteID) + "/customers"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -102,7 +102,7 @@ func (client *Client) GetCustomersBySiteID(token string, siteID int) ([]byte, er
 	return data, nil
 }
 
-func (client *Client) GetDisposalSites(token string) ([]byte, error)  {
+func (client *Client) GetDisposalSites(token string) ([]byte, error) {
 	url := client.URL + "/sites/disposal"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -121,7 +121,7 @@ func (client *Client) GetDisposalSites(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetTestLabs(token string) ([]byte, error)  {
+func (client *Client) GetTestLabs(token string) ([]byte, error) {
 	url := client.URL + "/sites/testlabs"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -140,7 +140,7 @@ func (client *Client) GetTestLabs(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetDeliveryFromSites(token string, siteID int) ([]byte, error)  {
+func (client *Client) GetDeliveryFromSites(token string, siteID int) ([]byte, error) {
 	url := client.URL + "/sites/" + strconv.Itoa(siteID) + "/from"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -184,7 +184,7 @@ func (client *Client) CreatePlanting(token string, planting CreatePlantingReques
 	return data, nil
 }
 
-func (client *Client) GetPlantings(token string) ([]byte, error)  {
+func (client *Client) GetPlantings(token string) ([]byte, error) {
 	url := client.URL + "/plantings"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -203,7 +203,7 @@ func (client *Client) GetPlantings(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetPlantingByID(token string, plantingID int) ([]byte, error)  {
+func (client *Client) GetPlantingByID(token string, plantingID int) ([]byte, error) {
 	url := client.URL + "/planting/" + strconv.Itoa(plantingID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -241,7 +241,7 @@ func (client *Client) GetPlantingLightTypes(token string) ([]byte, error) {
 	return data, nil
 }
 
-func (client *Client) UpdatePlanting(token string, planting UpdatePlantingRequest) ([]byte, error)  {
+func (client *Client) UpdatePlanting(token string, planting UpdatePlantingRequest) ([]byte, error) {
 	url := client.URL + "/plantings/edit"
 
 	j, err := json.Marshal(planting)
@@ -265,7 +265,7 @@ func (client *Client) UpdatePlanting(token string, planting UpdatePlantingReques
 	return data, nil
 }
 
-func (client *Client) DeletePlanting(token string, planting DeletePlantingRequest) ([]byte, error)  {
+func (client *Client) DeletePlanting(token string, planting DeletePlantingRequest) ([]byte, error) {
 	url := client.URL + "/plantings/delete"
 
 	j, err := json.Marshal(planting)
@@ -314,7 +314,7 @@ func (client *Client) CreateHarvest(token string, harvest CreateHarvestRequest) 
 	return data, nil
 }
 
-func (client *Client) GetHarvests(token string) ([]byte, error)  {
+func (client *Client) GetHarvests(token string) ([]byte, error) {
 	url := client.URL + "/harvests"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -333,7 +333,7 @@ func (client *Client) GetHarvests(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetHarvestByID(token string, harvestID int) ([]byte, error)  {
+func (client *Client) GetHarvestByID(token string, harvestID int) ([]byte, error) {
 	url := client.URL + "/harvests/" + strconv.Itoa(harvestID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -352,7 +352,7 @@ func (client *Client) GetHarvestByID(token string, harvestID int) ([]byte, error
 	return data, nil
 }
 
-func (client *Client) UpdateHarvest(token string, harvest UpdateHarvestRequest) ([]byte, error)  {
+func (client *Client) UpdateHarvest(token string, harvest UpdateHarvestRequest) ([]byte, error) {
 	url := client.URL + "/harvests/edit"
 
 	j, err := json.Marshal(harvest)
@@ -376,7 +376,7 @@ func (client *Client) UpdateHarvest(token string, harvest UpdateHarvestRequest) 
 	return data, nil
 }
 
-func (client *Client) DeleteHarvest(token string, harvest DeleteHarvestRequest) ([]byte, error)  {
+func (client *Client) DeleteHarvest(token string, harvest DeleteHarvestRequest) ([]byte, error) {
 	url := client.URL + "/harvests/delete"
 
 	j, err := json.Marshal(harvest)
@@ -425,7 +425,7 @@ func (client *Client) CreateProduct(token string, product CreateProductRequest) 
 	return data, nil
 }
 
-func (client *Client) GetProducts(token string) ([]byte, error)  {
+func (client *Client) GetProducts(token string) ([]byte, error) {
 	url := client.URL + "/products"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -444,7 +444,7 @@ func (client *Client) GetProducts(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetProductByID(token string, productID int) ([]byte, error)  {
+func (client *Client) GetProductByID(token string, productID int) ([]byte, error) {
 	url := client.URL + "/products/" + strconv.Itoa(productID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -463,7 +463,7 @@ func (client *Client) GetProductByID(token string, productID int) ([]byte, error
 	return data, nil
 }
 
-func (client *Client) GetProductTypes(token string) ([]byte, error)  {
+func (client *Client) GetProductTypes(token string) ([]byte, error) {
 	url := client.URL + "/products/types"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -482,7 +482,7 @@ func (client *Client) GetProductTypes(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) UpdateProduct(token string, product UpdateProductRequest) ([]byte, error)  {
+func (client *Client) UpdateProduct(token string, product UpdateProductRequest) ([]byte, error) {
 	url := client.URL + "/products/edit"
 
 	j, err := json.Marshal(product)
@@ -506,7 +506,7 @@ func (client *Client) UpdateProduct(token string, product UpdateProductRequest) 
 	return data, nil
 }
 
-func (client *Client) DeleteProduct(token string, product DeleteProductRequest) ([]byte, error)  {
+func (client *Client) DeleteProduct(token string, product DeleteProductRequest) ([]byte, error) {
 	url := client.URL + "/products/delete"
 
 	j, err := json.Marshal(product)
@@ -554,7 +554,7 @@ func (client *Client) CreateActivation(token string, activation CreateActivation
 	return data, nil
 }
 
-func (client *Client) GetActivationBatches(token string) ([]byte, error)  {
+func (client *Client) GetActivationBatches(token string) ([]byte, error) {
 	url := client.URL + "/activation/batches"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -573,7 +573,7 @@ func (client *Client) GetActivationBatches(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetActivationBatchByID(token string, batchID int) ([]byte, error)  {
+func (client *Client) GetActivationBatchByID(token string, batchID int) ([]byte, error) {
 	url := client.URL + "/activations/batches/" + strconv.Itoa(batchID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -592,7 +592,7 @@ func (client *Client) GetActivationBatchByID(token string, batchID int) ([]byte,
 	return data, nil
 }
 
-func (client *Client) GetProductInventory(token string) ([]byte, error)  {
+func (client *Client) GetProductInventory(token string) ([]byte, error) {
 	url := client.URL + "/inventory/product"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -611,7 +611,7 @@ func (client *Client) GetProductInventory(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetProductDetail(token string, siteID, productID int) ([]byte, error)  {
+func (client *Client) GetProductDetail(token string, siteID, productID int) ([]byte, error) {
 	url := client.URL + "/inventory/product/" + string(siteID) + "/" + string(productID)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -630,7 +630,7 @@ func (client *Client) GetProductDetail(token string, siteID, productID int) ([]b
 	return data, nil
 }
 
-func (client *Client) GetStampRollInventory(token string) ([]byte, error)  {
+func (client *Client) GetStampRollInventory(token string) ([]byte, error) {
 	url := client.URL + "/inventory/stamp"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -649,8 +649,8 @@ func (client *Client) GetStampRollInventory(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetStampsByStampRoll(token string, rollNumber string) ([]byte, error)  {
-	url := client.URL + "/inventory/stamp/" + rollNumber
+func (client *Client) GetStampsByStampRoll(token string, rollNumber string) ([]byte, error) {
+	url := client.URL + "/inventory/stamp/" + rollNumber + "?pageSize=1200"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -692,7 +692,7 @@ func (client *Client) CreateTransfer(token string, transfer CreateTransferReques
 	return data, nil
 }
 
-func (client *Client) GetTransfersIncoming(token string) ([]byte, error)  {
+func (client *Client) GetTransfersIncoming(token string) ([]byte, error) {
 	url := client.URL + "/transfers/incoming"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -730,7 +730,7 @@ func (client *Client) GetTransferIncomingByTransferID(token string, transferNumb
 	return data, nil
 }
 
-func (client *Client) GetTransfersOutgoing(token string) ([]byte, error)  {
+func (client *Client) GetTransfersOutgoing(token string) ([]byte, error) {
 	url := client.URL + "/transfers/outgoing"
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -749,7 +749,7 @@ func (client *Client) GetTransfersOutgoing(token string) ([]byte, error)  {
 	return data, nil
 }
 
-func (client *Client) GetTransfersOutgoingByTransferID(token string, transferNumber int) ([]byte, error)  {
+func (client *Client) GetTransfersOutgoingByTransferID(token string, transferNumber int) ([]byte, error) {
 	url := client.URL + "/transfers/outgoing/" + string(transferNumber)
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -768,7 +768,7 @@ func (client *Client) GetTransfersOutgoingByTransferID(token string, transferNum
 	return data, nil
 }
 
-func (client *Client) UpdateTransfer(token string, transfer UpdateTransferRequest) ([]byte, error)  {
+func (client *Client) UpdateTransfer(token string, transfer UpdateTransferRequest) ([]byte, error) {
 	url := client.URL + "/transfers/edit"
 
 	j, err := json.Marshal(transfer)
@@ -792,7 +792,7 @@ func (client *Client) UpdateTransfer(token string, transfer UpdateTransferReques
 	return data, nil
 }
 
-func (client *Client) ConfirmTransfer(token string, transfer ConfirmTransferRequest) ([]byte, error)  {
+func (client *Client) ConfirmTransfer(token string, transfer ConfirmTransferRequest) ([]byte, error) {
 	url := client.URL + "/transfers/confirm"
 
 	j, err := json.Marshal(transfer)
@@ -816,7 +816,7 @@ func (client *Client) ConfirmTransfer(token string, transfer ConfirmTransferRequ
 	return data, nil
 }
 
-func (client *Client) ReturnTransfer(token string, transfer ReturnTransferRequest) ([]byte, error)  {
+func (client *Client) ReturnTransfer(token string, transfer ReturnTransferRequest) ([]byte, error) {
 	url := client.URL + "/transfers/return"
 
 	j, err := json.Marshal(transfer)
@@ -840,7 +840,7 @@ func (client *Client) ReturnTransfer(token string, transfer ReturnTransferReques
 	return data, nil
 }
 
-func (client *Client) TraceStamp(token string, stampNumber string) ([]byte, error)  {
+func (client *Client) TraceStamp(token string, stampNumber string) ([]byte, error) {
 	url := client.URL + "/trace/" + stampNumber
 
 	req, err := http.NewRequest("GET", url, nil)
