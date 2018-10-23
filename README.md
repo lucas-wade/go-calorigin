@@ -9,3 +9,6 @@ https://developer.apisicpa.com/user/login?destination=node/183&autologout_timeou
 
 Cal Origin Website
 https://us.sicpa.com/calorigin
+
+Industry Login
+https://www.calorigin.org/sicpa_webapp/security/login.seam
