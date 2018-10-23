@@ -42,7 +42,7 @@ type DeletePlantingRequest struct {
 	LicenseSiteID int    `json:"licenseSiteId"`
 	StrainName    string `json:"strainName"`
 	PlantingDate  string `json:"plantingDate"`
-	PlantQty      string `json:"plantQty"`
+	PlantQty      int    `json:"plantQty"`
 }
 
 type CreateHarvestRequest struct {
