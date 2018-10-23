@@ -5,10 +5,7 @@ The wrapper is designed to unify the json fields while interacting with the Cal 
 We found that the Cal Origins API was returning fields with different names that the names of the fields on the Create and on the Update.
 
 Cal Origin API Documentation and Portal
-https://developer.apisicpa.com/user/login?destination=node/183&autologout_timeout=1
+https://developer.apisicpa.com/user/login
 
 Cal Origin Website
 https://us.sicpa.com/calorigin
-
-Industry Login
-https://www.calorigin.org/sicpa_webapp/security/login.seam
