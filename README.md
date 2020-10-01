@@ -1,4 +1,5 @@
 # go-calorigin
+Note: this file is Old and possibly out of date.
 A wrapper around Sicpa's Cal Origin Track and Trace API
 
 The wrapper is designed to unify the json fields while interacting with the Cal Origins Server.
